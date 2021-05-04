@@ -39,8 +39,12 @@ jobs:
           command: bundle exec rubocop
 
       - run:
-          name: Wait for database
+          name: wait for database
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - run:
+          name: prepare database
+          command: bundle exec rake db
 
       - run:
           name: test
