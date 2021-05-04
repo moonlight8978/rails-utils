@@ -2,12 +2,39 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ruby:3.0.1
+      - image: cimg/ruby:3.0.1
+        environment:
+          BUNDLE_APP_CONFIG: .bundle
+          SQL_DEBUG: 0
+          DB_PASSWORD: 1234
+          DB_HOST: db
+          DB_USERNAME: root
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: 1234
+          MYSQL_DATABASE: rails_utils_test
     steps:
       - checkout
+
+      - restore_cache:
+          keys:
+            - rails-utils-gems-{{ checksum "server/Gemfile.lock" }}
+            - rails-utils-gems-
+
       - run:
-          name: Run the default task
+          name: install gems
           command: |
-            gem install bundler -v 2.2.16
+            bundle config set --local path vendor/bundle
             bundle install
-            bundle exec rake
+
+      - run:
+          name: lint
+          command: bundle exec rubocop
+
+      - run:
+          name: Wait for database
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - run:
+          name: test
+          command: bundle exec rake spec
