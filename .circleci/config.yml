@@ -7,12 +7,14 @@ jobs:
           BUNDLE_APP_CONFIG: .bundle
           SQL_DEBUG: 0
           DB_PASSWORD: 1234
-          DB_HOST: localhost
+          DB_HOST: 127.0.0.1
           DB_USERNAME: root
+
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: 1234
           MYSQL_DATABASE: rails_utils_test
+
     steps:
       - checkout
 
