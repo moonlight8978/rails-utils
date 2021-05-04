@@ -7,7 +7,7 @@ jobs:
           BUNDLE_APP_CONFIG: .bundle
           SQL_DEBUG: 0
           DB_PASSWORD: 1234
-          DB_HOST: db
+          DB_HOST: localhost
           DB_USERNAME: root
       - image: circleci/mysql:5.7
         environment:
