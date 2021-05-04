@@ -1,4 +1,4 @@
-.PHONY: b t
+.PHONY: b t d
 
 b:
 	docker-compose build lib
@@ -6,4 +6,7 @@ b:
 	docker-compose run --rm lib bundle install
 
 t:
-	docker-compose run --rm lib bundle exec rspec
+	docker-compose run --rm lib bundle exec rake spec
+
+d:
+	docker-compose run --rm lib bundle exec rake db

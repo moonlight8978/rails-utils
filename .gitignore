@@ -1,4 +1,8 @@
-.bundle/
+# Debug, history files
 .rspec_status
+.byebug_history
 
+# Bundler related
+.bundle/
+Gemfile.lock
 vendor/bundle
