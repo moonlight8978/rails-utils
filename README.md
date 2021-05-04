@@ -1,5 +1,7 @@
 # rails-utils
 
+[![rails-utils](https://circleci.com/gh/moonlight8978/rails-utils.svg?style=shield)](https://app.circleci.com/pipelines/github/moonlight8978/rails-utils)
+
 Rails utilities for private use.
 
 ## Installation

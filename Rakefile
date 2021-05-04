@@ -12,9 +12,9 @@ RuboCop::RakeTask.new
 task default: %i[spec rubocop]
 
 task :db do
-  require "spec/support/active_record"
+  require_relative "./spec/support/active_record"
 
-  ActiveRecord::Migration.drop_table :users
+  ActiveRecord::Migration.drop_table :users, if_exists: true
   ActiveRecord::Migration.create_table :users, force: true do |t|
     t.string :username
     t.boolean :is_admin
