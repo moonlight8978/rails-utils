@@ -12,7 +12,7 @@ RuboCop::RakeTask.new
 task default: %i[spec rubocop]
 
 task :db do
-  require "spec/support/active_record"
+  require_relative "./spec/support/active_record"
 
   ActiveRecord::Migration.drop_table :users
   ActiveRecord::Migration.create_table :users, force: true do |t|
