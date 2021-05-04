@@ -9,7 +9,7 @@ RSpec.describe RailsUtils::Import do
 
     validates :username, presence: true
     validates :is_admin, presence: true
-    validates :is_admin, inclusion: ["0", "1"], allow_blank: true
+    validates :is_admin, inclusion: %w[0 1], allow_blank: true
   end
 
   let(:definition) { ImportCsvUserRow }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FixtureHelpers
   def file_fixture(filename)
     File.join(Dir.getwd, "spec", "fixtures", filename)

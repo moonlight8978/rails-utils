@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe RailsUtils::Import::CsvRowDefinition do
   describe ".parse" do
     class SampleBookCsv < described_class
@@ -9,7 +11,7 @@ RSpec.describe RailsUtils::Import::CsvRowDefinition do
 
     subject { SampleBookCsv.parse(row) }
 
-    let(:row) { OpenStruct.new(data: ["Depzai", "superdepzai", "2020-12-01", "200"], no: 1) }
+    let(:row) { OpenStruct.new(data: %w[Depzai superdepzai 2020-12-01 200], no: 1) }
 
     it "returns new csv instance, which has correct data" do
       csv = subject
@@ -40,4 +42,3 @@ RSpec.describe RailsUtils::Import::CsvRowDefinition do
     end
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Import::CsvRowDefinition
     include ActiveModel::Model
@@ -10,13 +12,11 @@ module RailsUtils
     class << self
       def column(name, type = ActiveModel::Type::Value.new, **options)
         attribute name, default: options[:default], type: :string
-        if type.is_a?(Symbol)
-          type = ActiveModel::Type.lookup(type, **options.except(:default, :no))
-        end
+        type = ActiveModel::Type.lookup(type, **options.except(:default, :no)) if type.is_a?(Symbol)
         self.types = types.merge(name.to_s => type)
       end
 
-      def parse(row, **context)
+      def parse(row, **_context)
         attributes = attribute_names.map.with_index do |attribute_name, index|
           [attribute_name, row.data[index]]
         end.to_h
@@ -42,7 +42,7 @@ module RailsUtils
     end
 
     def error_messages
-      errors.full_messages.map { |message| "Row #{no}: #{message}"}
+      errors.full_messages.map { |message| "Row #{no}: #{message}" }
     end
   end
 end

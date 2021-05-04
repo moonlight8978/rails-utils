@@ -20,7 +20,7 @@ RSpec.describe RailsUtils::Form do
     end
 
     context "when email is valid" do
-      let(:attrs) { { email: 'user@example.com' } }
+      let(:attrs) { { email: "user@example.com" } }
 
       it { is_expected.to be_valid }
     end

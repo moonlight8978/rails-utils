@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Export::CsvRowDefinition < Grape::Entity
     class << self
       def column(*args, **options)
-        expose *args, **options.except(:no, :header, :documentation), documentation: { desc: options[:header] }
+        expose(*args, **options.except(:no, :header, :documentation), documentation: { desc: options[:header] })
       end
 
       def generate_line(model, context)

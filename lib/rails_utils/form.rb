@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Form
     include ActiveModel::Model
@@ -7,7 +9,7 @@ module RailsUtils
 
     class << self
       def field(*args, **options)
-        attribute *args, **options.except(:exclude)
+        attribute(*args, **options.except(:exclude))
         self.attribute_names = [*attribute_names, args[0]] unless options[:exclude]
       end
     end

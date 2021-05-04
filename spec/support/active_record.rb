@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 require "active_record"
 
 ActiveRecord::Base.establish_connection(
   adapter: "mysql2",
   database: "rails_utils_test",
-  host:     ENV["DB_HOST"],
+  host: ENV["DB_HOST"],
   username: ENV["DB_USERNAME"],
-  password: ENV["DB_PASSWORD"],
+  password: ENV["DB_PASSWORD"]
 )
 
-if ENV["DEBUG"] == "1"
-  ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)
-end
+ActiveRecord::Base.logger = ActiveSupport::Logger.new($stdout) if ENV["SQL_DEBUG"] == "1"
 
 class User < ActiveRecord::Base; end

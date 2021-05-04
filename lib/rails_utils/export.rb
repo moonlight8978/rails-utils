@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Export
     attr_accessor :context, :io
@@ -6,7 +8,7 @@ module RailsUtils
       self.io = io
     end
 
-    def perform(iterator, headers: nil, after: proc {})
+    def perform(iterator, headers: nil, after: proc { 1 })
       io << headers if headers
 
       iterator.each do |csv_lines|
