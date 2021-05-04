@@ -9,7 +9,7 @@ RSpec.describe RailsUtils::Export do
   let(:iterator) { described_class::BasicIterator.new(User.all, definition) }
 
   subject do
-    Array.new.tap { |io| described_class.new(io).perform(iterator, headers: definition.generate_headers_line) }.join
+    [].tap { |io| described_class.new(io).perform(iterator, headers: definition.generate_headers_line) }.join
   end
 
   before do

@@ -61,7 +61,7 @@ UserCsvRow.generate_line(User.create(username: "abc"), { some_context: "value" }
 UserCsvRow.generate_headers_line
 
 class UsersController < ApplicationController
-  include RailsUtils::ExportCsvConcern
+  include RailsUtils::StreamableController
 
   def index
     stream_csv("users.csv") do |io|

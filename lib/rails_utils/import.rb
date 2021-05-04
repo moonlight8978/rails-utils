@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Import
     Row = Struct.new("Row", :no, :data, keyword_init: true)
 
-    def perform(csv_file, processor = Csvs::Import::RowProcessors::Basic.new, after: proc {})
+    def perform(csv_file, processor = Csvs::Import::RowProcessors::Basic.new, after: proc { 1 })
       index = 1
       # TODO: Handle invalid csv errors
       ActiveRecord::Base.transaction do

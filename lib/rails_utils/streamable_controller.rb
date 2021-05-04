@@ -1,21 +1,24 @@
+# frozen_string_literal: true
+
 require "action_pack"
+require "zip_tricks"
 
 # TODO: Write tests
 module RailsUtils
-  module ExportCsvConcern
+  module StreamableController
     extend ActiveSupport::Concern
 
     included do
       include ZipTricks::RailsStreaming
     end
 
-    def stream_zip(filename, &block)
+    def stream_zip(filename)
       # https://piotrmurach.com/articles/streaming-large-zip-files-in-rails/
       setup_streaming_headers(filename, "application/zip")
 
       zip_tricks_stream do |zip|
-        write_file_to_zip = proc do |filename, export|
-          zip.write_deflated_file(filename, &export)
+        write_file_to_zip = proc do |inner_filename, export|
+          zip.write_deflated_file(inner_filename, &export)
         end
         yield write_file_to_zip
       end

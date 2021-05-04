@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUtils
   class Export::BatchIterator
     attr_accessor :row_definition, :collection, :context, :batch_size
