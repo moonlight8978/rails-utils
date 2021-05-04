@@ -4,5 +4,4 @@
 
 # Bundler related
 .bundle/
-Gemfile.lock
 vendor/bundle
