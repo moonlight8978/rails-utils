@@ -1,6 +1,6 @@
 FROM ruby:3.0.1-alpine3.13
 
-RUN apk add --no-cache git build-base mysql-dev
+RUN apk add --no-cache git build-base mysql-dev tzdata
 
 RUN gem install bundler
 

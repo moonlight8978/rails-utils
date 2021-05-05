@@ -9,6 +9,7 @@ jobs:
           DB_PASSWORD: 1234
           DB_HOST: 127.0.0.1
           DB_USERNAME: root
+          RAILS_ENV: test
 
       - image: circleci/mysql:5.7
         environment:
@@ -44,7 +45,7 @@ jobs:
 
       - run:
           name: prepare database
-          command: bundle exec rake db
+          command: bundle exec rake app:setup
 
       - run:
           name: test

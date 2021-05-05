@@ -30,9 +30,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "actionpack", "~> 6.1"
-  spec.add_dependency "activemodel", "~> 6.1"
-  spec.add_dependency "activesupport", "~> 6.1"
   spec.add_dependency "grape-entity", "~> 0.9.0"
   spec.add_dependency "zip_tricks", "~> 5.5"
 

@@ -108,11 +108,23 @@ end
 
 ## Development
 
+#### Make commands
+
 ```bash
 make b # Build
 make d # Database
 make l # Lint
+make m # Migrate
 make t # Test
+```
+
+#### Rake tasks
+
+```bash
+bundle exec rake spec
+bundle exec rake rails[some_rails_task] # bundle exec rake rails[db:migrate]
+bundle exec rake app:prepare
+bundle exec rake app:setup
 ```
 
 ## License
