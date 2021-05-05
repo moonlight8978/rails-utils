@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rails_helper"
+
 RSpec.describe RailsUtils::Export do
   class ExportUserRow < described_class::CsvRowDefinition
     column :username, header: "Username", no: 1

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rails_helper"
+
 RSpec.describe RailsUtils::Import do
   class ImportCsvUserRow < described_class::CsvRowDefinition
     model User

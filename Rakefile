@@ -11,14 +11,29 @@ RuboCop::RakeTask.new
 
 task default: %i[spec rubocop]
 
-task :db do
-  require_relative "./spec/support/active_record"
+task :rails_env do
+  require_relative "./spec/dummy/config/environment"
+  Dummy::Application.load_tasks
+end
 
-  ActiveRecord::Migration.drop_table :users, if_exists: true
-  ActiveRecord::Migration.create_table :users, force: true do |t|
-    t.string :username
-    t.boolean :is_admin
+task :rails, [:task_name] => [:rails_env] do |_task, args|
+  Rake::Task[args[:task_name]].invoke
+end
 
-    t.timestamps
+namespace :db do
+  task prepare: :rails_env do
+    %w[drop create migrate].each do |db_task|
+      Rake::Task["db:#{db_task}"].invoke
+    rescue StandardError
+      nil
+    end
+  end
+
+  task setup: :rails_env do
+    %w[drop setup].each do |db_task|
+      Rake::Task["db:#{db_task}"].invoke
+    rescue StandardError
+      nil
+    end
   end
 end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rails_helper"
+
 RSpec.describe RailsUtils::Form do
   class SignUpForm < described_class
     field :email, type: :string
