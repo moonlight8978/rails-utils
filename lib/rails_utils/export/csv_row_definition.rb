@@ -3,8 +3,8 @@
 module RailsUtils
   class Export::CsvRowDefinition < Grape::Entity
     class << self
-      def column(*args, **options)
-        expose(*args, **options.except(:no, :header, :documentation), documentation: { desc: options[:header] })
+      def column(*args, **options, &block)
+        expose(*args, **options.except(:no, :header, :documentation), documentation: { desc: options[:header] }, &block)
       end
 
       def generate_line(model, context)

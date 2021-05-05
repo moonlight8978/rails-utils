@@ -38,7 +38,7 @@ end
 
 @form = Forms::Sudo.new(params.require(:user).permit(:password, :key, :return_to), model: current_user)
 @form.valid?      # => boolean
-@form.save        # Raise error, #save_model need to define to use this method
+@form.save        # Override #save_model to custom save logic, default to `model.update`
 @form.session_key # Custom attr reader
 ```
 

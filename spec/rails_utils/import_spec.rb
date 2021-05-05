@@ -7,7 +7,7 @@ RSpec.describe RailsUtils::Import do
     model User
 
     column :username, :string, no: 1
-    column :is_admin, :boolean, no: 2
+    column :is_admin, :boolean, no: 2, default: "0"
 
     validates :username, presence: true
     validates :is_admin, presence: true
@@ -22,7 +22,7 @@ RSpec.describe RailsUtils::Import do
   context "when import success" do
     let(:csv_file) { file_fixture("valid_users.csv") }
 
-    it "creates new records" do
+    it "creates new records with default values" do
       subject
 
       expect(User.count).to eq(2)

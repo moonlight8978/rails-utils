@@ -35,6 +35,16 @@ module RailsUtils
 
     virtual :no
 
+    def initialize(*)
+      super
+      @attributes.each_key do |attribute|
+        default_value = self.class._default_attributes[attribute]
+        next unless default_value
+
+        send(:"#{attribute}=", send(attribute).presence || default_value.value)
+      end
+    end
+
     def to_attributes
       self.class.attribute_names.map do |attribute_name|
         [attribute_name, self.class.types[attribute_name].serialize(public_send(attribute_name))]
