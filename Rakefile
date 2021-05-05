@@ -20,7 +20,7 @@ task :rails, [:task_name] => [:rails_env] do |_task, args|
   Rake::Task[args[:task_name]].invoke
 end
 
-namespace :db do
+namespace :app do
   task prepare: :rails_env do
     %w[drop create migrate].each do |db_task|
       Rake::Task["db:#{db_task}"].invoke

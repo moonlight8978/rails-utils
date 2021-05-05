@@ -45,7 +45,7 @@ jobs:
 
       - run:
           name: prepare database
-          command: bundle exec rake db:setup
+          command: bundle exec rake app:setup
 
       - run:
           name: test

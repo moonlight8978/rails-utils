@@ -9,7 +9,7 @@ t:
 	docker-compose run --rm lib bundle exec rake spec
 
 d:
-	docker-compose run --rm lib bundle exec rake db:prepare
+	docker-compose run --rm lib bundle exec rake app:prepare
 
 l:
 	docker-compose run --rm lib bundle exec rubocop -a

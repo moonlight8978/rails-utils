@@ -123,8 +123,8 @@ make t # Test
 ```bash
 bundle exec rake spec
 bundle exec rake rails[some_rails_task] # bundle exec rake rails[db:migrate]
-bundle exec rake db:prepare
-bundle exec rake db:setup
+bundle exec rake app:prepare
+bundle exec rake app:setup
 ```
 
 ## License
