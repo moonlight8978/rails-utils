@@ -37,7 +37,7 @@ module RailsUtils
 
     def initialize(*)
       super
-      @attributes.each_key do |attribute|
+      @attributes.keys.each do |attribute| # rubocop:disable Style/HashEachMethods
         default_value = self.class._default_attributes[attribute]
         next unless default_value
 
