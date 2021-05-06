@@ -8,7 +8,6 @@ RSpec.describe RailsUtils::Export do
   end
 
   let(:definition) { ExportUserRow }
-  let(:iterator) { described_class::BasicIterator.new(User.all, definition) }
 
   subject do
     [].tap { |io| described_class.new(io).perform(iterator, headers: definition.generate_headers_line) }.join
@@ -19,12 +18,27 @@ RSpec.describe RailsUtils::Export do
     create(:user, username: "User2")
   end
 
-  it "generate csv correctly" do
-    result = <<-CSV.strip_heredoc
+  let(:result) do
+    <<-CSV.strip_heredoc
       Username
       User1
       User2
     CSV
-    is_expected.to eq(result)
+  end
+
+  describe "basic iterator" do
+    let(:iterator) { described_class::BasicIterator.new(User.all, definition) }
+
+    it "generate csv correctly" do
+      is_expected.to eq(result)
+    end
+  end
+
+  describe "batch iterator" do
+    let(:iterator) { described_class::BatchIterator.new(User.all, definition) }
+
+    it "generate csv correctly" do
+      is_expected.to eq(result)
+    end
   end
 end

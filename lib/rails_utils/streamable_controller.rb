@@ -17,7 +17,7 @@ module RailsUtils
       setup_streaming_headers(filename, "application/zip")
 
       zip_tricks_stream do |zip|
-        write_file_to_zip = proc do |inner_filename, export|
+        write_file_to_zip = proc do |inner_filename, &export|
           zip.write_deflated_file(inner_filename, &export)
         end
         yield write_file_to_zip
