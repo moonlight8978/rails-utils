@@ -26,6 +26,12 @@ module RailsUtils
       save_model
     end
 
+    def save!
+      raise ActiveRecord::RecordInvalid.new(self) unless valid?
+
+      save_model
+    end
+
     # TODO: Allow to change attribute key name
     def attributes
       self.class.attribute_names.map do |attr|
