@@ -3,14 +3,14 @@
 require_relative "lib/rails_utils/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "rails-utils"
+  spec.name          = "rails_utils"
   spec.version       = RailsUtils::VERSION
   spec.authors       = ["_MoonLight_"]
   spec.email         = ["moonlight8978@gmail.com"]
 
   spec.summary       = "Rails utilities"
   spec.description   = "Rails utilities for personal use purpose"
-  spec.homepage      = "https://github.com/moonlight8978/rails-utils"
+  spec.homepage      = "https://github.com/moonlight8978/rails_utils"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 

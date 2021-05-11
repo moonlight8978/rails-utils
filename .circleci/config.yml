@@ -21,8 +21,8 @@ jobs:
 
       - restore_cache:
           keys:
-            - rails-utils-gems-{{ checksum "Gemfile.lock" }}
-            - rails-utils-gems-
+            - rails_utils-gems-{{ checksum "Gemfile.lock" }}
+            - rails_utils-gems-
 
       - run:
           name: install gems
@@ -31,7 +31,7 @@ jobs:
             bundle install
 
       - save_cache:
-          key: rails-utils-gems-{{ checksum "Gemfile.lock" }}
+          key: rails_utils-gems-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 

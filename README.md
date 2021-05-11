@@ -1,13 +1,13 @@
-# rails-utils
+# rails_utils
 
-[![rails-utils](https://circleci.com/gh/moonlight8978/rails-utils.svg?style=shield)](https://app.circleci.com/pipelines/github/moonlight8978/rails-utils)
+[![rails_utils](https://circleci.com/gh/moonlight8978/rails_utils.svg?style=shield)](https://app.circleci.com/pipelines/github/moonlight8978/rails_utils)
 
 Rails utilities for private use.
 
 ## Installation
 
 ```ruby
-gem 'rails-utils', git: "https://github.com/moonlight8978/rails-utils"
+gem 'rails_utils', git: "https://github.com/moonlight8978/rails_utils"
 ```
 
 ## Usage
