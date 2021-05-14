@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe RailsUtils::Export::CsvRowDefinition do
   class SimpleUserExportCsv < described_class
     format_with :date do |date|

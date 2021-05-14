@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe RailsUtils::Import::CsvRowDefinition do
   class SampleBookCsv < described_class
     column :title, :string

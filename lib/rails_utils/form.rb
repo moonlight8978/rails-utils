@@ -4,6 +4,7 @@ module RailsUtils
   class Form
     include ActiveModel::Model
     include ActiveModel::Attributes
+    include ActiveRecord::AttributeMethods::BeforeTypeCast
 
     class_attribute :attribute_names, default: [], instance_predicate: false, instance_accessor: false
 
@@ -27,7 +28,7 @@ module RailsUtils
     end
 
     def save!
-      raise ActiveRecord::RecordInvalid.new(self) unless valid?
+      raise(ActiveRecord::RecordInvalid, self) unless valid?
 
       save_model
     end

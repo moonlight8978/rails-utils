@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
+# TODO: Allow optional require
 require "csv"
-require "active_model"
 require "grape-entity"
-require "active_support"
+require "zip_tricks"
 
 require_relative "rails_utils/version"
 require_relative "rails_utils/export"
@@ -16,6 +16,4 @@ require_relative "rails_utils/export/csv_row_definition"
 require_relative "rails_utils/import/basic_processor"
 require_relative "rails_utils/import/csv_row_definition"
 
-module RailsUtils
-  class Error < StandardError; end
-end
+module RailsUtils; end
