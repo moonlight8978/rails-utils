@@ -28,7 +28,7 @@ module RailsUtils
     end
 
     def save!
-      raise ActiveRecord::RecordInvalid, self unless valid?
+      raise(ActiveRecord::RecordInvalid, self) unless valid?
 
       save_model
     end
